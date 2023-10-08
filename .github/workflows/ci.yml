@@ -1,0 +1,20 @@
+name: Example CI
+
+on:
+  push:
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: eifinger/setup-rye@v1
+
+      - uses: actions/checkout@v4
+
+      - name: Rye install
+        run: rye sync
+
+      - name: Rye run
+        run: rye run main
